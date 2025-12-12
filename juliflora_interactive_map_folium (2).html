@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7fffebf83b2ed729a60e4c560f1941d9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; right: 50px; width: 250px; height: auto; 
+     background-color: white; border:2px solid grey; z-index:9999; 
+     padding: 10px; font-size:14px; border-radius:5px;">
+     
+<h4 style="margin-top:0;">Classification Legend</h4>
+<p><span style="display:inline-block; width:20px; height:20px; 
+   background-color:#FFFF00; border:1px solid black; vertical-align:middle;"></span>
+   Non-Juliflora (Class 0)</p>
+<p><span style="display:inline-block; width:20px; height:20px; 
+   background-color:#00FF00; border:1px solid black; vertical-align:middle;"></span>
+   Juliflora (Class 1)</p>
+<p><span style="display:inline-block; width:20px; height:2px; 
+   background-color:#FF0000; border:1px solid black; vertical-align:middle;"></span>
+   Boundaries (Red)</p>
+   
+<hr>
+<p style="font-size:12px; margin-bottom:0;">
+<b>Region:</b> Kutch, Gujarat<br>
+<b>Year:</b> 2022<br>
+<b>Accuracy:</b> 98.85%
+</p>
+</div>
+    
+            <div class="folium-map" id="map_7fffebf83b2ed729a60e4c560f1941d9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7fffebf83b2ed729a60e4c560f1941d9 = L.map(
+                "map_7fffebf83b2ed729a60e4c560f1941d9",
+                {
+                    center: [23.5, 70.2],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+
+            
+
+        
+    
+            var tile_layer_6aaed156bea03224b367b3e48c9e48e3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6aaed156bea03224b367b3e48c9e48e3.addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+        
+    
+            var tile_layer_fcbb519c83dff7c625b8ea76e553c916 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=y\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fcbb519c83dff7c625b8ea76e553c916.addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+        
+    
+            var tile_layer_52d20f57b3c0d7ce4b1565259a23b173 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/climitra001/maps/a3b86b9939d4ee02a3027be53cbec3c6-e8c8dd0c66ae678a58a843a430be3ce3/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 0.7,
+}
+
+            );
+        
+    
+            tile_layer_52d20f57b3c0d7ce4b1565259a23b173.addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+        
+    
+            var tile_layer_e312185cf5e71028008f1b2758e47dff = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/climitra001/maps/c87933df5fbec8dc81fedd43e5c5a443-cae691fb7a95cac6db788aaac30ac7eb/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1.0,
+}
+
+            );
+        
+    
+            tile_layer_e312185cf5e71028008f1b2758e47dff.addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+        
+    
+            var tile_layer_ef9eafb7a76cfeb2f029bc377e656359 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/climitra001/maps/f7386352b0ec853b33e493f26daef99c-97619ba46bde97f47c8c0dda6ad62bdf/tiles/{z}/{x}/{y}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google Earth Engine",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1.0,
+}
+
+            );
+        
+    
+            tile_layer_ef9eafb7a76cfeb2f029bc377e656359.addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+        
+    
+            var layer_control_12f34cf1bd7e15384675899fe38a2556_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_6aaed156bea03224b367b3e48c9e48e3,
+                    "Google Satellite" : tile_layer_fcbb519c83dff7c625b8ea76e553c916,
+                },
+                overlays :  {
+                    "Juliflora Classification" : tile_layer_52d20f57b3c0d7ce4b1565259a23b173,
+                    "Village Boundaries (KACH)" : tile_layer_e312185cf5e71028008f1b2758e47dff,
+                    "Taluka Boundaries" : tile_layer_ef9eafb7a76cfeb2f029bc377e656359,
+                },
+            };
+            let layer_control_12f34cf1bd7e15384675899fe38a2556 = L.control.layers(
+                layer_control_12f34cf1bd7e15384675899fe38a2556_layers.base_layers,
+                layer_control_12f34cf1bd7e15384675899fe38a2556_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_7fffebf83b2ed729a60e4c560f1941d9);
+
+        
+</script>
+</html>
